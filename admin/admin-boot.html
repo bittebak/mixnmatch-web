@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<body ng-app="myApp" ng-controller="productControl">
+
+<div class="container">
+
+<h3>Products for Apps4Fashion</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Product (group) ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="product in products">
+      
+      <td>{{ product.name }}</td>
+      <td>{{ product.categoryDesc }}</td>
+      <td>{{ product.uniqueId }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div ng-hide="hideLoggedIn()">
+<hr>
+<button class="btn btn-success" ng-click="login()" >
+<span class="glyphicon glyphicon-user"></span>Login</button>
+
+
+<form class="form-horizontal" ng-hide="hideLoggedIn()">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Username:</label>
+    <div class="col-sm-10">
+    <input type="text" ng-model="username" ng-disabled="{{ loggedIn }}" placeholder="Username">
+    </div>
+  </div> 
+  
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Password:</label>
+    <div class="col-sm-10">
+    <input type="password" ng-model="password" placeholder="Password">
+    </div>
+  </div>
+
+</form>
+<hr>
+</div>
+
+
+<button class="btn btn-success" ng-hide="!hideLoggedIn()" ng-click="products()">
+<span class="glyphicon glyphicon-save"></span>Get products</button>
+
+
+</div>
+
+<script src= "admin-controller.js"></script>
+
+</body>
+</html>
