@@ -25,7 +25,18 @@ app.controller('productControl', function($scope, $http) {
  	headers: {
 	   	'Accept': 'application/json',
 	   	'Content-Type' : 'application/json'
-	 	}
+	 	},
+	 	withCredentials: true
+	}
+
+	var customersMsg = {
+ 	method: 'Get',
+ 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/a4f/check-customers',
+ 	headers: {
+	   	'Accept': 'application/json',
+	   	'Content-Type' : 'application/json'
+	 	},
+	 	withCredentials: true
 	}
 
 
@@ -33,6 +44,13 @@ app.controller('productControl', function($scope, $http) {
 	$scope.products  = function() {
 		$http(req)
   		.success(function (response) {$scope.products = response.a4fProducts;
+  		});
+	};
+
+	//callback
+	$scope.customers  = function() {
+		$http(customersMsg)
+  		.success(function (response) {$scope.customers = response.customers;
   		});
 	};
 
