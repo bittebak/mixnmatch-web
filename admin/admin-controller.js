@@ -1,11 +1,17 @@
+//require('angular-spinners');
+
 var app = angular.module('myApp', []);
 
-app.controller('productControl', function($scope, $http) {
+app.controller('productControl', ['$scope', '$http',
+	function($scope, $http) {
 
+	
 	//Data
 	$scope.password = "";
 	$scope.username = "";
 	$scope.loggedIn = false;
+	$scope.hideSpinner = true;
+	$scope.customersChecked = false;
 
 	//Message
 	var req = {
@@ -39,6 +45,16 @@ app.controller('productControl', function($scope, $http) {
 	 	withCredentials: true
 	}
 
+	var updateCustomersMsg = {
+ 	method: 'POST',
+ 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/a4f/update-customers',
+ 	headers: {
+	   	'Accept': 'application/json',
+	   	'Content-Type' : 'application/json'
+	 	},
+	 	withCredentials: true
+	}
+
 
 	//callback
 	$scope.products  = function() {
@@ -49,7 +65,16 @@ app.controller('productControl', function($scope, $http) {
 
 	//callback
 	$scope.customers  = function() {
+		hideUpdateCustomers = true;
 		$http(customersMsg)
+  		.success(function (response) {
+  			$scope.customers = response.customers;
+  			$scope.customersChecked = true;
+  		});
+	};
+
+	$scope.updateCustomers  = function() {
+		$http(updateCustomersMsg)
   		.success(function (response) {$scope.customers = response.customers;
   		});
 	};
@@ -73,5 +98,11 @@ app.controller('productControl', function($scope, $http) {
 		return $scope.loggedIn;
 	};
 
+	$scope.hideUpdateCustomers = function() {
+		return !$scope.customersChecked;
+	};
 
-});
+	
+
+}
+]);
