@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<!-- This line is necessary to support $location HTML5 mode (for query string parameters). -->
+<base href="/admin/">
 <link rel="stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 <script src= "admin-controller.js"></script>
@@ -9,27 +11,50 @@
 
 <div class="container">
 
-<div ng-hide="!hideLoggedIn()">
+<div ng-hide="!hideLoggedIn()" id="loggedin">
+<div id="orders">
+<h3>Orders from Apps4Fashion</h3>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Message</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="message in syncMessages">
+        
+        <td>{{ message }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-success" ng-click="syncOrders()">
+  <span class="glyphicon glyphicon-save"></span>Sync Orders</button>
+</div>
+
   <h3>Products for Apps4Fashion</h3>
 
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Name</th>
         <th>Category</th>
-        <th>Product (group) ID</th>
+        <th>Name</th>
+        <th>Product Number</th>
+        <th>Product group</th>
+        <th>Photo</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="product in products">
-        
-        <td>{{ product.name }}</td>
         <td>{{ product.categoryDesc }}</td>
+        <td>{{ product.name }}</td>
         <td>{{ product.uniqueId }}</td>
+        <td>{{ product.productGroupCode}}
+        <td> <img src="{{ product.media[0].thumbUrl }}" height="100" > </td>
       </tr>
     </tbody>
   </table>
-  <button class="btn btn-success" ng-click="products()">
+  <button class="btn btn-success" ng-click="checkProducts()">
   <span class="glyphicon glyphicon-save"></span>Check products</button>
   <hr>
   <h3>Customers for Apps4Fashion</h3>
@@ -87,12 +112,32 @@
   <hr>
   </div>
 
+  <div ng-hide="!hideLoggedIn()"> 
 
-  <button class="btn btn-success" ng-hide="!hideLoggedIn()" ng-click="customers()">
-  <span class="glyphicon glyphicon-save"></span>Check customers</button>
+    <button class="btn btn-success" ng-click="checkCustomers()">
+    <span class="glyphicon glyphicon-save"></span>Check customers</button>
 
-  <button class="btn btn-success" ng-hide="hideUpdateCustomers()" ng-click="updateCustomers()">
-  <span class="glyphicon glyphicon-save"></span>Update all customers</button>
+    <button class="btn btn-success" ng-hide="hideUpdateCustomers()" ng-click="updateCustomers()">
+    <span class="glyphicon glyphicon-save"></span>Update all customers</button>
+
+    <hr>
+    <div>
+      <label for="new-message">New message </label> 
+      <text id="new-message">{{message}}</text>
+      
+      <label for="message">Previous message </label> 
+      <text id="message">{{previousMessage}}</text>
+    </div>
+  </div>
+
+  <footer>
+    <p>Version 2</p>
+    <p>Last changed : 22:59 Feb 08, 2016<p>
+    <p>Changes : Sync orders</p> 
+    <p>API</p> 
+    <p>version  :{{version.version}}</p>
+    <p>changes  :{{version.changes}}</p>
+  </footer>   
 </div>
 
 

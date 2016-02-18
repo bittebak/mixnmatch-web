@@ -2,16 +2,25 @@
 
 var app = angular.module('myApp', []);
 
-app.controller('productControl', ['$scope', '$http',
-	function($scope, $http) {
+//HTML5 is required for query param search
+app.config( [ '$locationProvider', function( $locationProvider ) {
+   // In order to get the query string from the
+   // $location object, it must be in HTML5 mode.
+   $locationProvider.html5Mode( true );
+}]);
 
-	
+app.controller('productControl', ['$scope', '$http', '$location',
+	function($scope, $http, $location) {
+
 	//Data
 	$scope.password = "";
 	$scope.username = "";
 	$scope.loggedIn = false;
 	$scope.hideSpinner = true;
 	$scope.customersChecked = false;
+	$scope.message = "";
+	$scope.previousMessage = "";
+	$scope.version = {};
 
 	//Message
 	var req = {
@@ -55,27 +64,75 @@ app.controller('productControl', ['$scope', '$http',
 	 	withCredentials: true
 	}
 
+	var syncOrdersMsg = {
+ 	method: 'POST',
+ 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/a4f/orders/sync',
+ 	headers: {
+	   	'Accept': 'application/json',
+	   	'Content-Type' : 'application/json'
+	 	},
+	 	withCredentials: true
+	}
+
+	var versionMsg = {
+ 	method: 'Get',
+ 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/version',
+ 	headers: {
+	   	'Accept': 'application/json',
+	   	'Content-Type' : 'application/json'
+	 	},
+	 	withCredentials: true
+	}
+
+	$scope.setMessage = function (newMessage) {
+		$scope.previousMessage = $scope.message;
+		$scope.message = newMessage;
+
+	};
 
 	//callback
-	$scope.products  = function() {
+	$scope.checkProducts  = function() {
 		$http(req)
   		.success(function (response) {$scope.products = response.a4fProducts;
   		});
 	};
 
 	//callback
-	$scope.customers  = function() {
-		hideUpdateCustomers = true;
+	$scope.checkCustomers  = function() {
+		$scope.customersChecked = false;
+		$scope.setMessage("Getting customers");
 		$http(customersMsg)
   		.success(function (response) {
   			$scope.customers = response.customers;
   			$scope.customersChecked = true;
+  			$scope.setMessage("Found " + response.nrOfCusomers + " customers.");
   		});
 	};
 
 	$scope.updateCustomers  = function() {
+		$scope.setMessage("Updating customers");
+		$scope.customers = [];
 		$http(updateCustomersMsg)
-  		.success(function (response) {$scope.customers = response.customers;
+  		.success(function (response) {
+  			if(response.success) {
+  				$scope.customers = response.customers;
+  				$scope.setMessage("Updated " + response.nrOfCusomers + " customers.");
+  			}
+  			else {
+  				$scope.setMessage( "Updating failed. Computer says:\"" + response.message + "\"")
+  			}
+  			
+  		});
+	};
+
+	$scope.syncOrders  = function() {
+		$scope.setMessage("Syning orders");
+		$scope.syncMessages = [];
+		$http(syncOrdersMsg)
+  		.success(function (response) {
+  				$scope.syncMessages = response.results;
+  				$scope.setMessage("Updated orders");
+  			
   		});
 	};
 
@@ -87,6 +144,7 @@ app.controller('productControl', ['$scope', '$http',
  		//****your code here******					
 		$http(loginMsg).success( function (response) {	
 			console.log(response);
+
 			$scope.loggedIn = true;	
 		//Well, just hope for the best and stop spinner
 		//***your code here****
@@ -102,7 +160,25 @@ app.controller('productControl', ['$scope', '$http',
 		return !$scope.customersChecked;
 	};
 
-	
+	$scope.getVersion = function() {
+		$http(versionMsg)
+  		.success(function (response) {
+  			$scope.version = response;
+  			
+  		});
+
+
+	}
+
+	//get query parameters
+
+	var urlParams = $location.search();
+	$scope.username = urlParams['username'];
+	$scope.password = urlParams['password'];
+	$scope.test = urlParams['test'];
+
+	console.log(urlParams);
+	$scope.getVersion();
 
 }
 ]);
