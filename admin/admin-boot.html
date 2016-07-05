@@ -8,6 +8,7 @@
 
 
 <body ng-app="myApp" ng-controller="productControl">
+<img src="http://www.royalrepubliq.com/images/tiles/78_image_1.jpg" width="380" ><img src="http://www.royalrepubliq.com/images/tiles/79_image_1.jpg" width="380" ><img src="http://www.royalrepubliq.com/images/tiles/80_image_1.jpg" width="380" >
 
 <div class="container">
 
@@ -45,7 +46,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="product in products">
+      <tr ng-repeat="product in products | orderBy:['categoryDesc','name']">
         <td>{{ product.categoryDesc }}</td>
         <td>{{ product.name }}</td>
         <td>{{ product.uniqueId }}</td>
@@ -56,6 +57,10 @@
   </table>
   <button class="btn btn-success" ng-click="checkProducts()">
   <span class="glyphicon glyphicon-save"></span>Check products</button>
+  <button class="btn btn-success" ng-click="updateProducts()">
+  <span class="glyphicon glyphicon-save"></span>Update products</button>
+
+
   <hr>
   <h3>Customers for Apps4Fashion</h3>
 

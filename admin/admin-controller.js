@@ -23,11 +23,11 @@ app.controller('productControl', ['$scope', '$http', '$location',
 	$scope.version = {};
 
 	//Message
-	var req = {
+	var testProduct = {
 	 	method: 'GET',
-	 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/check-a4f-products',
+	 	 url: 'product_response.json',
 	 	headers: {
-		   
+		  
 		   	'Accept': 'application/json'
 		 	},
 	 	data: { test: 'test' },
@@ -54,9 +54,19 @@ app.controller('productControl', ['$scope', '$http', '$location',
 	 	withCredentials: true
 	}
 
-	var updateCustomersMsg = {
+	var checkProductsMsg = {
  	method: 'POST',
- 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/a4f/update-customers',
+ 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/af4/productcs/check',
+ 	headers: {
+	   	'Accept': 'application/json',
+	   	'Content-Type' : 'application/json'
+	 	},
+	 	withCredentials: true
+	}
+
+	var updateProductsMsg = {
+ 	method: 'POST',
+ 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/af4/productcs/update',
  	headers: {
 	   	'Accept': 'application/json',
 	   	'Content-Type' : 'application/json'
@@ -92,7 +102,20 @@ app.controller('productControl', ['$scope', '$http', '$location',
 
 	//callback
 	$scope.checkProducts  = function() {
-		$http(req)
+		if($scope.test == 'true') {
+			$http(testProduct)
+	  		.success(function (response) {$scope.products = response.a4fProducts;
+	  		});
+
+		} else {
+			$http(checkProductsMsg)
+	  		.success(function (response) {$scope.products = response.a4fProducts;
+	  		});
+  		}
+	};
+
+	$scope.updateProducts  = function() {
+		$http(upateProductsMsg)
   		.success(function (response) {$scope.products = response.a4fProducts;
   		});
 	};
@@ -167,7 +190,6 @@ app.controller('productControl', ['$scope', '$http', '$location',
   			
   		});
 
-
 	}
 
 	//get query parameters
@@ -176,6 +198,9 @@ app.controller('productControl', ['$scope', '$http', '$location',
 	$scope.username = urlParams['username'];
 	$scope.password = urlParams['password'];
 	$scope.test = urlParams['test'];
+	if($scope.test == 'true') {
+		$scope.loggedIn = true;
+	}
 
 	console.log(urlParams);
 	$scope.getVersion();
