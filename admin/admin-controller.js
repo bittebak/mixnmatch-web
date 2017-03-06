@@ -21,6 +21,9 @@ app.controller('productControl', ['$scope', '$http', '$location',
 	$scope.message = "";
 	$scope.previousMessage = "";
 	$scope.version = {};
+	$scope.nrOfProducts=0;
+	$scope.nrOfCustomers=0;
+	$scope.productsChecked=false;
 
 	//Message
 	var testProduct = {
@@ -46,7 +49,7 @@ app.controller('productControl', ['$scope', '$http', '$location',
 
 	var customersMsg = {
  	method: 'Get',
- 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/a4f/check-customers',
+ 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/check-customers',
  	headers: {
 	   	'Accept': 'application/json',
 	   	'Content-Type' : 'application/json'
@@ -55,8 +58,20 @@ app.controller('productControl', ['$scope', '$http', '$location',
 	}
 
 	var checkProductsMsg = {
+ 	method: 'GET',
+
+ 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/products/check',
+ 	headers: {
+	   	'Accept': 'application/json',
+	   	'Content-Type' : 'application/json'
+	 	},
+	 	withCredentials: true,
+	 	timeout:300000
+	}
+
+	var updateProductsMsg = {
  	method: 'POST',
- 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/af4/productcs/check',
+ 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/products/update',
  	headers: {
 	   	'Accept': 'application/json',
 	   	'Content-Type' : 'application/json'
@@ -64,9 +79,9 @@ app.controller('productControl', ['$scope', '$http', '$location',
 	 	withCredentials: true
 	}
 
-	var updateProductsMsg = {
+	var updateCustomersMsg = {
  	method: 'POST',
- 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/af4/productcs/update',
+ 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/update-customers',
  	headers: {
 	   	'Accept': 'application/json',
 	   	'Content-Type' : 'application/json'
@@ -76,7 +91,7 @@ app.controller('productControl', ['$scope', '$http', '$location',
 
 	var syncOrdersMsg = {
  	method: 'POST',
- 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/a4f/orders/sync',
+ 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/orders/sync',
  	headers: {
 	   	'Accept': 'application/json',
 	   	'Content-Type' : 'application/json'
@@ -94,6 +109,16 @@ app.controller('productControl', ['$scope', '$http', '$location',
 	 	withCredentials: true
 	}
 
+	var checkConfigMsg = {
+ 	method: 'Get',
+ 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/config/check',
+ 	headers: {
+	   	'Accept': 'application/json',
+	   	'Content-Type' : 'application/json'
+	 	},
+	 	withCredentials: true
+	}
+
 	$scope.setMessage = function (newMessage) {
 		$scope.previousMessage = $scope.message;
 		$scope.message = newMessage;
@@ -102,33 +127,49 @@ app.controller('productControl', ['$scope', '$http', '$location',
 
 	//callback
 	$scope.checkProducts  = function() {
+		$scope.productsChecked=false;
+		$scope.setMessage("Checking products.")
 		if($scope.test == 'true') {
 			$http(testProduct)
-	  		.success(function (response) {$scope.products = response.a4fProducts;
+	  		.success(function (response) {
+	  			$scope.products = response.a4fProducts;
+	  			$scope.nrOfProducts = response.nrOfProductsSentToA4F;
+	  			setMessage("Done checking products.");
+	  			$scope.productsChecked=true;
 	  		});
 
 		} else {
 			$http(checkProductsMsg)
 	  		.success(function (response) {$scope.products = response.a4fProducts;
-	  		});
+	  			$scope.nrOfProducts = response.nrOfProductsSentToA4F;
+	  			$scope.setMessage("Done checking products.");
+	  			$scope.productsChecked=true;
+	  		}).error(function() {
+	  			$scope.setMessage("Error checking products.")
+                    
+                });
   		}
 	};
 
 	$scope.updateProducts  = function() {
-		$http(upateProductsMsg)
-  		.success(function (response) {$scope.products = response.a4fProducts;
+		$scope.setMessage("Updating products.");
+		$http(updateProductsMsg)
+  		.success(function (response) {
+  			$scope.products = response.a4fProducts;
+  			$scope.setMessage("Products updated.");
   		});
 	};
 
 	//callback
 	$scope.checkCustomers  = function() {
-		$scope.customersChecked = false;
+		$scope.customersChecked=false;
 		$scope.setMessage("Getting customers");
 		$http(customersMsg)
   		.success(function (response) {
   			$scope.customers = response.customers;
-  			$scope.customersChecked = true;
+  			$scope.customersChecked=true
   			$scope.setMessage("Found " + response.nrOfCusomers + " customers.");
+  			$scope.nrOfCustomers = $scope.customers.length;
   		});
 	};
 
@@ -144,7 +185,6 @@ app.controller('productControl', ['$scope', '$http', '$location',
   			else {
   				$scope.setMessage( "Updating failed. Computer says:\"" + response.message + "\"")
   			}
-  			
   		});
 	};
 
@@ -158,6 +198,18 @@ app.controller('productControl', ['$scope', '$http', '$location',
   			
   		});
 	};
+
+	$scope.checkConfig  = function() {
+		$scope.customersChecked=false;
+		$scope.setMessage("Checking config.");
+		$http(checkConfigMsg)
+  		.success(function (response) {
+  			$scope.setMessage("Done. Check log file for results.");
+  		}).error(function (response) {
+  			$scope.setMessage("Config check failed");
+  		});
+	};
+
 
 	$scope.login = function() {
 		
@@ -181,6 +233,10 @@ app.controller('productControl', ['$scope', '$http', '$location',
 
 	$scope.hideUpdateCustomers = function() {
 		return !$scope.customersChecked;
+	};
+
+	$scope.areProductsChecked = function() {
+		return $scope.productsChecked;
 	};
 
 	$scope.getVersion = function() {

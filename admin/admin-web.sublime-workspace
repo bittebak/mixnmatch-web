@@ -93,7 +93,7 @@
 			],
 			[
 				"h",
-				"head	Tag"
+				"head\tTag"
 			],
 			[
 				"pro",
@@ -246,7 +246,7 @@
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -273,7 +273,7 @@
 			"WARN",
 			"SPA",
 			"spa",
-			"		\n",
+			"\t\t\n",
 			"check",
 			"prod",
 			"update",
@@ -469,7 +469,7 @@
 		"height": 0.0
 	},
 	"pinned_build_system": "",
-	"project": "admin-boot.sublime-project",
+	"project": "admin-web.sublime-project",
 	"replace":
 	{
 		"height": 46.0
@@ -510,7 +510,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 288.0,
+	"side_bar_width": 225.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

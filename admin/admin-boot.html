@@ -8,7 +8,11 @@
 
 
 <body ng-app="myApp" ng-controller="productControl">
+<center><img src="http://22punewjo5r2fmxet1enlu41.wpengine.netdna-cdn.com/wp-content/uploads/LOGO2.jpg" width="300" ></center>
+
+<!--
 <img src="http://www.royalrepubliq.com/images/tiles/78_image_1.jpg" width="380" ><img src="http://www.royalrepubliq.com/images/tiles/79_image_1.jpg" width="380" ><img src="http://www.royalrepubliq.com/images/tiles/80_image_1.jpg" width="380" >
+-->
 
 <div class="container">
 
@@ -34,7 +38,8 @@
 </div>
 
   <h3>Products for Apps4Fashion</h3>
-
+  <div>Nr of products is {{nrOfProducts}}</div>
+<!--
   <table class="table table-striped">
     <thead>
       <tr>
@@ -55,15 +60,18 @@
       </tr>
     </tbody>
   </table>
+  -->
   <button class="btn btn-success" ng-click="checkProducts()">
   <span class="glyphicon glyphicon-save"></span>Check products</button>
-  <button class="btn btn-success" ng-click="updateProducts()">
-  <span class="glyphicon glyphicon-save"></span>Update products</button>
+    <button class="btn btn-success" ng-click="updateProducts()" ng-hide="!areProductsChecked()">
+    <span class="glyphicon glyphicon-save"></span>Update products</button>
 
 
   <hr>
   <h3>Customers for Apps4Fashion</h3>
+  <div>Nr of customers {{nrOfCustomers}}</div>
 
+  <!--
   <table class="table table-striped">
     <thead>
       <tr>
@@ -88,6 +96,7 @@
       </tr>
     </tbody>
   </table>
+  -->
 
   </div>
 
@@ -135,13 +144,33 @@
     </div>
   </div>
 
+   <div ng-hide="!hideLoggedIn()"> 
+
+    <button class="btn btn-success" ng-click="checkConfig()">
+    <span class="glyphicon glyphicon-save"></span>Check config</button>
+
+    
+    <hr>
+    <div>
+      <label for="new-message">New message</label> 
+      <text id="new-message">{{message}}</text>
+      
+      <label for="message">Previous message </label> 
+      <text id="message">{{previousMessage}}</text>
+    </div>
+  </div>
+
   <footer>
-    <p>Version 2</p>
-    <p>Last changed : 22:59 Feb 08, 2016<p>
-    <p>Changes : Sync orders</p> 
+    <p>Version 3</p>
+    <p>Last changed : Oct 30, 2016<p>
+    <p>Changes : 
+      config checker
+      version ifo
+    </p> 
     <p>API</p> 
-    <p>version  :{{version.version}}</p>
-    <p>changes  :{{version.changes}}</p>
+    <p>version    :{{version.version}}</p>
+    <p>Changed on :{{version.buildTimeStamp}}</p>
+    <p>changes    :{{version.changes}}</p>
   </footer>   
 </div>
 

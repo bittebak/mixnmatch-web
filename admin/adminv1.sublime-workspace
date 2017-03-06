@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"p",
+				"productsChecked"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
 				"in",
 				"inputPath"
 			],
@@ -93,7 +101,7 @@
 			],
 			[
 				"h",
-				"head	Tag"
+				"head\tTag"
 			],
 			[
 				"pro",
@@ -112,15 +120,23 @@
 	"command_palette":
 	{
 		"height": 87.0,
-		"last_filter": "install",
+		"last_filter": "Package Control: inst",
 		"selected_items":
 		[
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
 			[
 				"install",
 				"Package Control: Install Package"
 			]
 		],
-		"width": 467.0
+		"width": 411.0
 	},
 	"console":
 	{
@@ -148,8 +164,27 @@
 	"file_history":
 	[
 		"/Users/marcprive/workspaces/republiqv2/mix-n-match/config/cerberus/cerberus-api.xml",
-		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/admin/admin-boot.html",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/styles.css",
 		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/admin/admin-controller.js",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/admin/admin-boot.html",
+		"/Users/marcprive/Downloads/test.txt",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/script/cerberus/deploy_api_config.sh",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/systemjs.config.js",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/app/main.ts",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/app/hero-detail.component.js",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/app/hero-detail.component.js.map",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/app/app.component.ts",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/app/hero.ts",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/app/hero-detail.component.ts",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/index.html",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/app/app.component.js",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/app/hero.js",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/typings.json",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/tsconfig.json",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/app/app.component.js.map",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/typings/main.d.ts",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/app/main.js",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/package.json",
 		"/private/var/republiq/config/product_groups.csv",
 		"/private/var/republiq/convert/convert-variants-manual/script/deploy_d.sh",
 		"/private/var/republiq/convert/convert-slash2-color/script/run.sh",
@@ -246,7 +281,7 @@
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -261,6 +296,28 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"hid",
+			"customersch",
+			"checkp",
+			"  \t\t\t",
+			"nrOfCustomers",
+			"leng",
+			"checkproductsm",
+			"checkp",
+			"time",
+			"a4f",
+			"-a4",
+			".products",
+			"products",
+			"a4",
+			"a4f",
+			"check",
+			"sync ",
+			"details",
+			"heroes",
+			"hero",
+			"HEROES",
+			"message =",
 			"inputPath",
 			"\n        ",
 			"        \n",
@@ -273,7 +330,7 @@
 			"WARN",
 			"SPA",
 			"spa",
-			"		\n",
+			"\t\t\n",
 			"check",
 			"prod",
 			"update",
@@ -366,29 +423,7 @@
 			"sizes>",
 			"<sizes",
 			"/sizes",
-			"style",
-			"              \n",
-			"cross",
-			"col",
-			"medi",
-			"noo",
-			">\n",
-			"col",
-			"              \n",
-			"\n            ",
-			"api:nam",
-			"noos",
-			"\n               ",
-			"                  \n",
-			"                  ",
-			"               \n",
-			"           \n",
-			"\n            ",
-			"            \n",
-			"media",
-			"Medium",
-			"thumb",
-			"thump"
+			"style"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -464,12 +499,16 @@
 		]
 	},
 	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
 	},
 	"pinned_build_system": "",
-	"project": "admin-boot.sublime-project",
+	"project": "adminv1.sublime-project",
 	"replace":
 	{
 		"height": 46.0
@@ -510,7 +549,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 288.0,
+	"side_bar_width": 225.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
