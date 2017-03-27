@@ -1,0 +1,543 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"in",
+				"inputPath"
+			],
+			[
+				"che",
+				"checkProducts"
+			],
+			[
+				"out",
+				"outputBasePath"
+			],
+			[
+				"input",
+				"inputPath"
+			],
+			[
+				"ba",
+				"basePath"
+			],
+			[
+				"b",
+				"basePath"
+			],
+			[
+				"jar",
+				"jarfile"
+			],
+			[
+				"version",
+				"versionMsg"
+			],
+			[
+				"get",
+				"getVersion"
+			],
+			[
+				"con",
+				"config_dir"
+			],
+			[
+				"output",
+				"output_file"
+			],
+			[
+				"o",
+				"order_file"
+			],
+			[
+				"ou",
+				"output_dir"
+			],
+			[
+				"trans",
+				"transferDir"
+			],
+			[
+				"r",
+				"republiq"
+			],
+			[
+				"re",
+				"remote_deploy_dir"
+			],
+			[
+				"t",
+				"takeoff"
+			],
+			[
+				"e",
+				"ec2-user"
+			],
+			[
+				"j",
+				"jar"
+			],
+			[
+				"ja",
+				"jar-file-name"
+			],
+			[
+				"tar",
+				"targetFile"
+			],
+			[
+				"sor",
+				"sortCode"
+			],
+			[
+				"h",
+				"head\tTag"
+			],
+			[
+				"pro",
+				"products"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 87.0,
+		"last_filter": "Package Control: inst",
+		"selected_items":
+		[
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 411.0
+	},
+	"console":
+	{
+		"height": 309.0,
+		"history":
+		[
+			"package controll",
+			"package",
+			"install",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"install",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"install"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/app/hero.js",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/app/app.component.js",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/typings.json",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/tsconfig.json",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/app/app.component.js.map",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/typings/main.d.ts",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/app/main.ts",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/app/main.js",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/index.html",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/package.json",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/styles.css",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/app/hero-detail.component.ts",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/adminv2/app/app.component.ts",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/admin/admin-controller.js",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/admin/admin-boot.html",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/config/cerberus/cerberus-api.xml",
+		"/private/var/republiq/config/product_groups.csv",
+		"/private/var/republiq/convert/convert-variants-manual/script/deploy_d.sh",
+		"/private/var/republiq/convert/convert-slash2-color/script/run.sh",
+		"/private/var/republiq/convert/convert-slash2-color/output/BRIDGE",
+		"/private/var/republiq/convert/convert-slash2-color/164.csv_out.csv.",
+		"/var/republiq/convert/convert-slash2-color/input/BRIDGE",
+		"/private/var/republiq/convert/convert-slash2-color/input/164.csv.converted.csv",
+		"/private/var/republiq/convert/convert-slash2-color/output/BRIDGE 164.csv_out.csv",
+		"/private/var/republiq/convert/convert-slash2-color/input/BRIDGE 164.csv",
+		"/private/var/log/yellowtwig/mixandmatch/admin/warnings.log",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/config/admin/log4j-config.xml",
+		"/var/republiq/config/slash2_products.csv",
+		"/var/republiq/convert/convert-variants-slash2/output/products-slash2-converted-MAN.csv",
+		"/private/var/republiq/config/product_sizes.csv",
+		"/Users/marcprive/Google Drive/YellowTwig/klanten/RepubliQ/RepubliQ/Project Management/Projects/MixAndMatch/testing/results/20160320 - missing.csv",
+		"/private/var/republiq/config/boxes.2.csv",
+		"/Users/marcprive/Google Drive/YellowTwig/klanten/RepubliQ/RepubliQ/Project Management/Projects/MixAndMatch/testing/fixes.txt",
+		"/private/var/republiq/convert/convert-slash2-color/bridge.sh",
+		"/var/republiq/mam/cmd/etc/log4j2.xml",
+		"/private/var/republiq/convert/convert-variants-manual/data/input/Product conversion list v4_20160204.csv",
+		"/private/var/republiq/config/slash2_products.csv",
+		"/private/var/republiq/convert/convert-variants-manual/script/run.sh",
+		"/private/var/republiq/convert/convert-slash2-color/script/deploy_d.sh",
+		"/private/var/republiq/mam/cmd/script/deploy.sh",
+		"/private/var/republiq/config/slash2_products_old.csv",
+		"/private/var/republiq/convert/convert-slash2/input/products-slash2-for-conversion-MAN.csv",
+		"/private/var/republiq/convert/convert-slash2/output/products-slash2-for-conversion-MAN.csv_out.csv",
+		"/private/var/republiq/mam/cmd/log/cmd.log",
+		"/Users/marcprive/cheatsheet.rtf",
+		"/private/var/republiq/convert/purchase-order/20160303.sh",
+		"/private/var/republiq/convert/purchase-order/script/run.sh",
+		"/private/var/republiq/convert/convert-slash2/script/deploy_d.sh",
+		"/private/var/republiq/convert/convert-slash2/script/run.sh",
+		"/private/var/republiq/config/l",
+		"/private/var/republiq/purchase-order/script/deploy.sh",
+		"/private/var/republiq/purchase-order/run.sh",
+		"/Users/marcprive/Google Drive/YellowTwig/klanten/RepubliQ/RepubliQ/Project Management/Projects/MixAndMatch/data/Test/Oled_test/ProductGroup_CreateFromDataArray.xml",
+		"/Users/marcprive/Google Drive/YellowTwig/klanten/RepubliQ/RepubliQ/Project Management/Projects/MixAndMatch/data/Test/Oled_test/ProductGroup_GetDataArray_Response.xml",
+		"/Users/marcprive/Google Drive/YellowTwig/klanten/RepubliQ/RepubliQ/Project Management/Projects/MixAndMatch/data/Test/Oled_test/ProductGroup_GetAllResponse.xml",
+		"/private/var/republiq/purchase-order/data/output/purchase-order-generated.csv",
+		"/private/var/republiq/config/boxes.csv",
+		"/private/var/republiq/convert/products_converted.csv",
+		"/Users/marcprive/workspaces/republiq/integration/doc/links",
+		"/Users/marcprive/workspaces/republiq/integration/env/AWS/config/republiq.conf",
+		"/Users/marcprive/workspaces/republiq/integration/env/AWS/copy_db.sh",
+		"/Users/marcprive/workspaces/republiq/apps4fashion/integration/product/env/deploy.sh",
+		"/Users/marcprive/workspaces/republiq/apps4fashion/requests/a4f_20151017.xml",
+		"/Users/marcprive/workspaces/republiq/apps4fashion/doc/cheatsheet",
+		"/Users/marcprive/workspaces/republiq/integration/doc/AWS",
+		"/private/var/log/republiq/convert/warnings.log",
+		"/private/var/log/yellowtwig/admin.log",
+		"/Users/marcprive/workspaces/republiq/integration/env/AWS/deploy_idp.sh",
+		"/Users/marcprive/workspaces/republiq/integration/env/AWS/deploy_admin.sh",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/doc/S3 website.txt",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/lib/convert-product/target/myexample.log",
+		"/private/var/log/yellowtwig/convert-product-cmd.log",
+		"/private/var/republiq/convert/convert-product-cmd.log",
+		"/private/var/republiq/convert/slash2_missing_20160122.txt",
+		"/Users/marcprive/Downloads/ews-java-api-master/test.csv",
+		"/private/var/republiq/purchase-order/script/run.sh",
+		"/private/var/log/republiq/purchase-order/warnings.log",
+		"/private/var/republiq/purchase-order/purchase-order.csv",
+		"/var/log/republiq/convert/warnings.log",
+		"/private/var/log/republiq/convert/convert-product-cmd.log",
+		"/private/var/log/republiq/convert/variant_warnings",
+		"/private/var/republiq/mam/cmd/etc/log4j2.xml",
+		"/private/var/republiq/mam/cmd/order.sh",
+		"/Users/marcprive/workspaces/republiqv2/mix-n-match/app/web/admin/admin-boot.",
+		"/Users/marcprive/Documents/tips.txt",
+		"/private/var/log/yellowtwig/mixandmatch/cmd.log",
+		"/private/var/republiq/mam/cmd/run.sh",
+		"/private/var/republiq/mam/cmd/log/cmd-2016-02-05-",
+		"/private/var/republiq/mam/cmd/log/cmd-2016-02-05-3.log",
+		"/etc/yellowtwig/mixandmatch/mixandmatch.properties",
+		"/private/var/log/republiq/convert/variant_warnings.log",
+		"/private/var/republiq/mam/a4f-cmd/run.sh",
+		"/private/var/republiq/convert/variants.csv",
+		"/private/var/log/republiq/purchase-order/warnings-2016-02-02-1.log",
+		"/var/log/republiq/purchase-order/cmd.log",
+		"/Volumes/Macintosh HD/Users/marcprive/workspaces/lenticularis/take2/AWS/copy_db.sh",
+		"/Users/marcprive/workspaces/republiq/integration/iapi_config/republiq-api.xml",
+		"/Users/marcprive/workspaces/republiq/apps4fashion/env/run.sh",
+		"/Users/marcprive/workspaces/republiq/apps4fashion/requests/box2.xml",
+		"/Users/marcprive/workspaces/republiq/apps4fashion/api.xsd",
+		"/Users/marcprive/workspaces/republiq/product-list-poc/product_service/product_service.sublime-project",
+		"/Users/marcprive/workspaces/lenticularis/take2/AWS/doc/cheatsheet",
+		"/Users/marcprive/workspaces/republiq/product-list-poc/product-list/v3.css",
+		"/Users/marcprive/workspaces/republiq/product-list-poc/product-list/getproducts.html",
+		"/Users/marcprive/workspaces/republiq/product-list-poc/test/namesController.js",
+		"/Users/marcprive/Google Drive/YellowTwig/Financieel/bank/gegevens.txt",
+		"/Users/marcprive/Google Drive/YellowTwig/klanten/RoyalReplubic/RoyalRepubliq/Build/E-conomic/info.txt",
+		"/Users/marcprive/Google Drive/YellowTwig/klanten/RoyalReplubic/RoyalRepubliq/Build/E-conomic/test/namesController.js",
+		"/Users/marcprive/Google Drive/YellowTwig/klanten/RoyalReplubic/RoyalRepubliq/Build/E-conomic/test/getproducts.html"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"details",
+			"heroes",
+			"hero",
+			"HEROES",
+			"message =",
+			"inputPath",
+			"\n        ",
+			"        \n",
+			"spart",
+			"BOOT",
+			"SPA",
+			"sparta",
+			"NO;",
+			"NO",
+			"WARN",
+			"SPA",
+			"spa",
+			"\t\t\n",
+			"check",
+			"prod",
+			"update",
+			"product",
+			"category",
+			"output",
+			"color",
+			"test",
+			"Box 12",
+			"Box 8",
+			"InventoryWithdrawal",
+			"AccountForVatExemptDebtorInvoicesCurrentHandle",
+			"e:AccountForVatExemptDebtorInvoicesCurrentHandle",
+			"Name",
+			"ProductGroupData",
+			"AccountForVatLiableDebtorInvoicesCurrentHandle",
+			"Number",
+			"Handle",
+			"AccountForVatLiableDebtorInvoicesCurrente",
+			"Number",
+			"Handle",
+			"ProductGroupData",
+			"Number",
+			"ProductGroupHandle",
+			"Wallets;17",
+			"b12",
+			"Box 2",
+			"Box 1",
+			"uniq",
+			"ean",
+			"prepack",
+			"ean",
+			"size",
+			"bag",
+			"http://",
+			"16562:q",
+			"16562",
+			"limit belt",
+			"16562-3801",
+			"101121-101",
+			"skip",
+			"25004",
+			"skip",
+			"products",
+			"color:q",
+			"color",
+			"25100\n2510",
+			"25100\n25100",
+			"1050-3601",
+			"1015-3601",
+			"targetdi",
+			"20",
+			"appd",
+			"take",
+			"idp",
+			"remote_a",
+			"type",
+			"prices",
+			"price",
+			"PRICE",
+			";",
+			"\"5",
+			"7100",
+			"2125",
+			"productGroupDesc",
+			"productGroupCode",
+			"group",
+			": name",
+			"         \n",
+			"products>",
+			"http://api.cc.salesapp.apptitude.nl",
+			"storefullproductset",
+			"sort",
+			"api:summ",
+			"api:s",
+			"<api:su",
+			"<api:s",
+			"sortcode",
+			"api",
+			"sort",
+			"thum",
+			"size",
+			"sizes",
+			"size",
+			"noos",
+			"sort",
+			"sortcode",
+			"noos",
+			"/api:sizes>",
+			"sizes>",
+			"<sizes",
+			"/sizes",
+			"style",
+			"              \n",
+			"cross",
+			"col",
+			"medi",
+			"noo",
+			">\n",
+			"col",
+			"              \n",
+			"\n            ",
+			"api:nam",
+			"noos",
+			"\n               ",
+			"                  \n",
+			"                  ",
+			"               \n",
+			"           \n",
+			"\n            "
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"Box 2",
+			"Box 1",
+			"e:InventoryWithdrawal",
+			"e:AccountForVatExemptDebtorInvoicesCurrentHandle",
+			"e:Name",
+			"e:ProductGroupData",
+			"e:AccountForVatLiableDebtorInvoicesCurrentHandle",
+			"e:Number",
+			"e:Handle",
+			"e:AccountForVatLiableDebtorInvoicesCurrente",
+			"e:Number",
+			"e:Handle",
+			"Handle",
+			"e:ProductGroupData",
+			"e:Number",
+			"e:ProductGroupHandle",
+			"Wallets;18",
+			"Box 12",
+			"Box 8",
+			"Collection;Category;Size;Amount\nBox 1;5;36;1\nBox 1;5;37;1\nBox 1;5;38;2\nBox 1;5;39;2\nBox 1;5;40;1\nBox 1;5;41;1\nBox 2;5;36;1\nBox 2;5;37;2\nBox 2;5;38;3\nBox 2;5;39;3\nBox 2;5;40;2\nBox 2;5;41;1\nBox 1;4;40;1\nBox 1;4;41;1\nBox 1;4;42;2\nBox 1;4;43;2\nBox 1;4;44;1\nBox 1;4;45;1\nBox 2;4;40;1\nBox 2;4;41;2\nBox 2;4;42;3\nBox 2;4;43;3\nBox 2;4;44;2\nBox 2;4;45;1",
+			"Box 8",
+			","
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "h.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 60.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
