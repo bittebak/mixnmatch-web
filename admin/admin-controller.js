@@ -2,6 +2,9 @@
 
 var app = angular.module('myApp', []);
 
+
+
+
 //HTML5 is required for query param search
 app.config( [ '$locationProvider', function( $locationProvider ) {
    // In order to get the query string from the
@@ -24,22 +27,33 @@ app.controller('productControl', ['$scope', '$http', '$location',
 	$scope.nrOfProducts=0;
 	$scope.nrOfCustomers=0;
 	$scope.productsChecked=false;
+	$scope.apiMessage="Nothing yet."
 
-	//Message
-	var testProduct = {
-	 	method: 'GET',
-	 	 url: 'product_response.json',
-	 	headers: {
-		  
-		   	'Accept': 'application/json'
-		 	},
-	 	data: { test: 'test' },
-	 	withCredentials: true
+	var urlParams = $location.search();
+
+	$scope.getApiUrl = function() {
+		apiParam = urlParams['api'];
+		switch(apiParam) {
+			case "int":
+			$scope.apiBaseUrl = "http://localhost:8080/Cerberus-1.0.0";
+
+			break;
+
+			default:
+			apiBaseUrl = 'http://republiq.yellowtwig.nl/Cerberus-1.0.0';
+			break;
+
+		}
 	}
 
-	var loginMsg = {
+	$scope.getApiUrl();
+	//Message
+	
+
+	
+	loginMsg = {
  	method: 'POST',
- 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/login',
+ 	url: $scope.apiBaseUrl + '/login',
  	headers: {
 	   	'Accept': 'application/json',
 	   	'Content-Type' : 'application/json'
@@ -49,7 +63,7 @@ app.controller('productControl', ['$scope', '$http', '$location',
 
 	var customersMsg = {
  	method: 'Get',
- 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/check-customers',
+ 	url: $scope.apiBaseUrl + '/admin/check-customers',
  	headers: {
 	   	'Accept': 'application/json',
 	   	'Content-Type' : 'application/json'
@@ -57,21 +71,30 @@ app.controller('productControl', ['$scope', '$http', '$location',
 	 	withCredentials: true
 	}
 
-	var checkProductsMsg = {
- 	method: 'GET',
 
- 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/products/check',
+	var replaceProductsMsg = {
+ 	method: 'POST',
+ 	url: $scope.apiBaseUrl + '/admin/products/replace',
  	headers: {
 	   	'Accept': 'application/json',
 	   	'Content-Type' : 'application/json'
 	 	},
-	 	withCredentials: true,
-	 	timeout:300000
+	 	withCredentials: true
 	}
 
 	var updateProductsMsg = {
  	method: 'POST',
- 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/products/update',
+ 	url: $scope.apiBaseUrl + '/admin/products/update',
+ 	headers: {
+	   	'Accept': 'application/json',
+	   	'Content-Type' : 'application/json'
+	 	},
+	 	withCredentials: true
+	}
+
+	var seasonReplaceProductsMsg = {
+ 	method: 'POST',
+ 	url: $scope.apiBaseUrl + '/admin/products/season',
  	headers: {
 	   	'Accept': 'application/json',
 	   	'Content-Type' : 'application/json'
@@ -81,7 +104,7 @@ app.controller('productControl', ['$scope', '$http', '$location',
 
 	var updateCustomersMsg = {
  	method: 'POST',
- 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/update-customers',
+ 	url: $scope.apiBaseUrl + '/admin/update-customers',
  	headers: {
 	   	'Accept': 'application/json',
 	   	'Content-Type' : 'application/json'
@@ -91,7 +114,7 @@ app.controller('productControl', ['$scope', '$http', '$location',
 
 	var syncOrdersMsg = {
  	method: 'POST',
- 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/orders/sync',
+ 	url: $scope.apiBaseUrl + '/admin/orders/sync',
  	headers: {
 	   	'Accept': 'application/json',
 	   	'Content-Type' : 'application/json'
@@ -101,7 +124,7 @@ app.controller('productControl', ['$scope', '$http', '$location',
 
 	var versionMsg = {
  	method: 'Get',
- 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/version',
+ 	url: $scope.apiBaseUrl + '/admin/version',
  	headers: {
 	   	'Accept': 'application/json',
 	   	'Content-Type' : 'application/json'
@@ -111,10 +134,10 @@ app.controller('productControl', ['$scope', '$http', '$location',
 
 	var checkConfigMsg = {
  	method: 'Get',
- 	url: 'http://republiq.yellowtwig.nl/Cerberus-1.0.0/admin/config/check',
+ 	url: $scope.apiBaseUrl +'/admin/config/check',
  	headers: {
-	   	'Accept': 'application/json',
-	   	'Content-Type' : 'application/json'
+	   	'Accept': 'application/json'
+	   	
 	 	},
 	 	withCredentials: true
 	}
@@ -122,41 +145,35 @@ app.controller('productControl', ['$scope', '$http', '$location',
 	$scope.setMessage = function (newMessage) {
 		$scope.previousMessage = $scope.message;
 		$scope.message = newMessage;
-
 	};
 
-	//callback
-	$scope.checkProducts  = function() {
-		$scope.productsChecked=false;
-		$scope.setMessage("Checking products.")
-		if($scope.test == 'true') {
-			$http(testProduct)
-	  		.success(function (response) {
-	  			$scope.products = response.a4fProducts;
-	  			$scope.nrOfProducts = response.nrOfProductsSentToA4F;
-	  			setMessage("Done checking products.");
-	  			$scope.productsChecked=true;
-	  		});
-
-		} else {
-			$http(checkProductsMsg)
-	  		.success(function (response) {$scope.products = response.a4fProducts;
-	  			$scope.nrOfProducts = response.nrOfProductsSentToA4F;
-	  			$scope.setMessage("Done checking products.");
-	  			$scope.productsChecked=true;
-	  		}).error(function() {
-	  			$scope.setMessage("Error checking products.")
-                    
-                });
-  		}
+	$scope.replaceProducts  = function() {
+		$scope.setMessage("Start replacing all products. Have patience, wait 1 hour.");
+		$http(replaceProductsMsg)
+  		.success(function (response) {
+  			
+  			$scope.setMessage("Products replaced.");
+  			$scope.errorText = response.count;
+  		});
 	};
 
-	$scope.updateProducts  = function() {
-		$scope.setMessage("Updating products.");
+	//Incremental update
+	$scope.incrementalUpdateProducts  = function() {
+		$scope.setMessage("Start incremental product update (wait 4 minutes).");
 		$http(updateProductsMsg)
   		.success(function (response) {
-  			$scope.products = response.a4fProducts;
-  			$scope.setMessage("Products updated.");
+  			$scope.setMessage("Products updated incrementally.");
+  			$scope.errorText = response.count;
+  		});
+	};
+
+	//Seasonal full update
+	$scope.replaceSeasonProducts  = function() {
+		$scope.setMessage("Replacing seasonal products.");
+		$http(seasonReplaceProductsMsg)
+  		.success(function (response) {
+  			
+  			$scope.setMessage("Seasonal products are updated.");
   		});
 	};
 
@@ -189,12 +206,13 @@ app.controller('productControl', ['$scope', '$http', '$location',
 	};
 
 	$scope.syncOrders  = function() {
-		$scope.setMessage("Syning orders");
+		$scope.setMessage("Start syncing orders");
 		$scope.syncMessages = [];
 		$http(syncOrdersMsg)
   		.success(function (response) {
   				$scope.syncMessages = response.results;
   				$scope.setMessage("Updated orders");
+  				$scope.apiMessage=response.results;
   			
   		});
 	};
@@ -205,8 +223,15 @@ app.controller('productControl', ['$scope', '$http', '$location',
 		$http(checkConfigMsg)
   		.success(function (response) {
   			$scope.setMessage("Done. Check log file for results.");
+  			
+  			if(response.allOk) {
+  				$scope.apiMessage=response.resultMap;
+  			} else {
+  				$scope.apiMessage=response.errorText;
+  			}
   		}).error(function (response) {
   			$scope.setMessage("Config check failed");
+  			$scope.apiMessage=resultMap;
   		});
 	};
 
@@ -247,18 +272,13 @@ app.controller('productControl', ['$scope', '$http', '$location',
   		});
 
 	}
-
-	//get query parameters
-
-	var urlParams = $location.search();
 	$scope.username = urlParams['username'];
 	$scope.password = urlParams['password'];
 	$scope.test = urlParams['test'];
 	if($scope.test == 'true') {
 		$scope.loggedIn = true;
 	}
-
-	console.log(urlParams);
+	
 	$scope.getVersion();
 
 }
