@@ -2,9 +2,6 @@
 
 var app = angular.module('myApp', []);
 
-
-
-
 //HTML5 is required for query param search
 app.config( [ '$locationProvider', function( $locationProvider ) {
    // In order to get the query string from the
@@ -40,7 +37,7 @@ app.controller('productControl', ['$scope', '$http', '$location',
 			break;
 
 			default:
-			apiBaseUrl = 'http://republiq.yellowtwig.nl/Cerberus-1.0.0';
+			$scope.apiBaseUrl = '../../Cerberus-1.0.0';
 			break;
 
 		}
@@ -111,6 +108,29 @@ app.controller('productControl', ['$scope', '$http', '$location',
 	 	},
 	 	withCredentials: true
 	}
+
+	var mergeStylesLatestMsg = {
+ 	method: 'POST',
+ 	url: $scope.apiBaseUrl + '/delogue/admin/latest/merge',
+ 	headers: {
+	   	'Accept': 'application/json',
+	   	'Content-Type' : 'application/json'
+	 	},
+	 	withCredentials: true
+	}
+
+	var cleanStylesLatestMsg = {
+ 	method: 'POST',
+ 	url: $scope.apiBaseUrl + '/delogue/admin/latest/clean',
+ 	headers: {
+	   	'Accept': 'application/json',
+	   	'Content-Type' : 'application/json'
+	 	},
+	 	withCredentials: true
+	}
+
+
+
 
 	var syncOrdersMsg = {
  	method: 'POST',
@@ -213,6 +233,7 @@ app.controller('productControl', ['$scope', '$http', '$location',
   				$scope.syncMessages = response.results;
   				$scope.setMessage("Updated orders");
   				$scope.apiMessage=response.results;
+
   			
   		});
 	};
@@ -232,6 +253,36 @@ app.controller('productControl', ['$scope', '$http', '$location',
   		}).error(function (response) {
   			$scope.setMessage("Config check failed");
   			$scope.apiMessage=resultMap;
+  		});
+	};
+
+	$scope.mergeStylesLatest  = function() {
+		$scope.setMessage("Merging latest styles.");
+		
+		$http(mergeStylesLatestMsg)
+  		.success(function (response) {
+  			if(response.success) {
+  				$scope.customers = response.customers;
+  				$scope.setMessage("Merged. " + response.message);
+  			}
+  			else {
+  				$scope.setMessage( "Merge failed. Computer says:\"" + response.message + "\"")
+  			}
+  		});
+	};
+
+	$scope.cleanStylesLatest  = function() {
+		$scope.setMessage("Cleaning latest styles.");
+		
+		$http(mergeStylesLatestMsg)
+  		.success(function (response) {
+  			if(response.success) {
+  				$scope.customers = response.customers;
+  				$scope.setMessage("Cleaned. " + response.message);
+  			}
+  			else {
+  				$scope.setMessage( "Clean failed. Computer says:\"" + response.message + "\"")
+  			}
   		});
 	};
 
@@ -272,6 +323,9 @@ app.controller('productControl', ['$scope', '$http', '$location',
   		});
 
 	}
+
+
+
 	$scope.username = urlParams['username'];
 	$scope.password = urlParams['password'];
 	$scope.test = urlParams['test'];

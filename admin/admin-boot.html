@@ -81,7 +81,7 @@
    <button class="btn btn-success" ng-click="replaceProducts()" id="btn-replace-products">
   <span class="glyphicon glyphicon-save"></span>Full update All.</button>
   <label for="btn-replace-products">Replace all products. !!!This will take 1 hour to complete!!! </label>
-  
+
 
   <h3>Customers</h3>
   <button class="btn btn-success" ng-click="updateCustomers()">
@@ -92,8 +92,20 @@
     <button class="btn btn-success" ng-click="checkConfig()" id="btn-config">
     <span class="glyphicon glyphicon-save"></span>Check config</button>
     <label for="btn-config">Perform a sanity check on the MaM configuration files.</label>
-    <div>Check the results for this check in <a href="../log/admin/config.log">log files</a>
+    <div>Check the results for this check in <a href="republiq.yellowtwig.nl/log/admin/config.log">log files</a>
 
+
+ <!--  Delogue -->
+    <hr>
+    <h3>Delogue</h3>
+  <button class="btn btn-success" ng-click="mergeStylesLatest()">
+  <span class="glyphicon glyphicon-save"></span>Merge Lateste Styles</button>
+
+   <button class="btn btn-success" ng-click="cleanStylesLatest()">
+  <span class="glyphicon glyphicon-save"></span>Clean-uplatest styles</button>
+
+
+  
     <hr>
     <div>
     <label for="message">Previous message </label> 
